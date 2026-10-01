@@ -54,7 +54,15 @@ The workflow focuses on adults ages **18–62**, uses complete cases for the mod
 8. Compare H1 and H2 and inspect attenuation of the MVPA coefficient.
 9. Run regression diagnostics, VIF, ROC/AUC, Hosmer–Lemeshow checks, and influence diagnostics.
 
-## Analysis snapshot
+## Results
+
+![Analytic sample results](figures/sample_results.svg)
+
+The final analytic sample contains **247 adults**. Mean age was **45.2 years**, mean waist circumference was **107.0 cm**, mean systolic blood pressure was **131.7 mmHg**, and **66.4%** met the analysis definition of hypertension. Mean weekly MVPA was **1,416.2 minute-equivalents**.
+
+![Race and ethnicity distribution](figures/race_distribution.svg)
+
+### Analysis snapshot
 
 | Metric | Value |
 |---|---:|
@@ -69,7 +77,7 @@ These values describe the final complete-case, no-BP-medication analytic sample 
 
 ## Figures and generated outputs
 
-Running the analysis script now writes publication-ready model tables to `results/` and three portfolio-ready PNG figures to `figures/`:
+The repository includes the descriptive result figures above. Running the analysis script also writes publication-ready model tables to `results/` and three portfolio-ready PNG figures to `figures/`:
 
 - `mvpa_hypertension_models.png` — MVPA odds ratio before vs. after adding waist circumference.
 - `mvpa_waist_association.png` — adjusted MVPA association with waist circumference.
