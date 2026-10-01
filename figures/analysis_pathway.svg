@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="520" viewBox="0 0 1200 520">
+<rect width="1200" height="520" fill="#f8faf9"/>
+<text x="70" y="75" font-family="Arial,sans-serif" font-size="34" font-weight="700" fill="#17251f">Analysis pathway</text>
+<text x="70" y="112" font-family="Arial,sans-serif" font-size="19" fill="#66736d">NHANES 2017–March 2020 pre-pandemic · adults 18–62</text>
+<rect x="80" y="205" rx="18" width="260" height="120" fill="#ffffff" stroke="#b8c3bd" stroke-width="2"/>
+<text x="210" y="252" text-anchor="middle" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#17251f">Physical activity</text>
+<text x="210" y="287" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" fill="#66736d">MVPA minute-equivalents/week</text>
+<rect x="470" y="205" rx="18" width="260" height="120" fill="#ffffff" stroke="#b8c3bd" stroke-width="2"/>
+<text x="600" y="252" text-anchor="middle" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#17251f">Waist circumference</text>
+<text x="600" y="287" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" fill="#66736d">Central adiposity pathway</text>
+<rect x="860" y="205" rx="18" width="260" height="120" fill="#ffffff" stroke="#b8c3bd" stroke-width="2"/>
+<text x="990" y="252" text-anchor="middle" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#17251f">Hypertension</text>
+<text x="990" y="287" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" fill="#66736d">Measured SBP / DBP</text>
+<path d="M340 265 H460" stroke="#365d4d" stroke-width="4" fill="none"/><polygon points="460,265 444,256 444,274" fill="#365d4d"/>
+<path d="M730 265 H850" stroke="#365d4d" stroke-width="4" fill="none"/><polygon points="850,265 834,256 834,274" fill="#365d4d"/>
+<path d="M210 340 C350 440 850 440 990 340" stroke="#365d4d" stroke-width="3" fill="none" stroke-dasharray="9 7"/><polygon points="990,340 974,337 980,353" fill="#365d4d"/>
+<text x="600" y="425" text-anchor="middle" font-family="Arial,sans-serif" font-size="17" fill="#66736d">Models adjust for age, sex, race/ethnicity, PIR, sedentary time, smoking and alcohol</text>
+</svg>
