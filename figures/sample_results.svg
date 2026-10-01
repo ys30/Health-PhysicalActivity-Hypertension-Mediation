@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="650" viewBox="0 0 1200 650">
+<rect width="1200" height="650" fill="#fbfcfb"/>
+<text x="70" y="72" font-family="Arial,sans-serif" font-size="34" font-weight="700" fill="#17251f">Analytic sample results</text>
+<text x="70" y="108" font-family="Arial,sans-serif" font-size="18" fill="#68756f">NHANES 2017–March 2020 pre-pandemic · complete-case sample · no BP-medication users</text>
+<g font-family="Arial,sans-serif">
+<rect x="70" y="160" width="245" height="165" rx="20" fill="#fff" stroke="#d5ddd9"/><text x="95" y="205" font-size="18" fill="#68756f">Analytic sample</text><text x="95" y="270" font-size="48" font-weight="700" fill="#214c3b">247</text><text x="95" y="302" font-size="16" fill="#68756f">adults ages 18–62</text>
+<rect x="335" y="160" width="245" height="165" rx="20" fill="#fff" stroke="#d5ddd9"/><text x="360" y="205" font-size="18" fill="#68756f">Hypertension</text><text x="360" y="270" font-size="48" font-weight="700" fill="#214c3b">66.4%</text><text x="360" y="302" font-size="16" fill="#68756f">measured SBP / DBP definition</text>
+<rect x="600" y="160" width="245" height="165" rx="20" fill="#fff" stroke="#d5ddd9"/><text x="625" y="205" font-size="18" fill="#68756f">Mean waist</text><text x="625" y="270" font-size="48" font-weight="700" fill="#214c3b">107.0</text><text x="625" y="302" font-size="16" fill="#68756f">cm · SD 18.6</text>
+<rect x="865" y="160" width="265" height="165" rx="20" fill="#fff" stroke="#d5ddd9"/><text x="890" y="205" font-size="18" fill="#68756f">Mean systolic BP</text><text x="890" y="270" font-size="48" font-weight="700" fill="#214c3b">131.7</text><text x="890" y="302" font-size="16" fill="#68756f">mmHg · SD 20.8</text>
+<text x="70" y="392" font-size="20" font-weight="700" fill="#17251f">Additional sample characteristics</text>
+<line x1="70" y1="420" x2="1130" y2="420" stroke="#d5ddd9"/>
+<text x="90" y="470" font-size="18" fill="#68756f">Mean age</text><text x="330" y="470" font-size="23" font-weight="700" fill="#17251f">45.2 years</text>
+<text x="90" y="520" font-size="18" fill="#68756f">Mean weekly MVPA</text><text x="330" y="520" font-size="23" font-weight="700" fill="#17251f">1,416.2 min-equivalent</text>
+<text x="650" y="470" font-size="18" fill="#68756f">Men</text><text x="875" y="470" font-size="23" font-weight="700" fill="#17251f">135 · 54.7%</text>
+<text x="650" y="520" font-size="18" fill="#68756f">Women</text><text x="875" y="520" font-size="23" font-weight="700" fill="#17251f">112 · 45.3%</text>
+<text x="70" y="605" font-size="15" fill="#7b8781">Values are descriptive results from the final analytic sample; no survey weights are applied.</text>
+</g></svg>
