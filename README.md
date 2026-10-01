@@ -2,6 +2,8 @@
 
 A reproducible **NHANES 2017–March 2020 pre-pandemic** analysis examining whether waist circumference helps explain the association between moderate-to-vigorous physical activity (MVPA) and hypertension.
 
+![Analysis pathway](figures/analysis_pathway.svg)
+
 ## Research question
 
 How is MVPA associated with hypertension, and how does the estimated MVPA association change after adding **waist circumference** to the outcome model?
@@ -64,6 +66,16 @@ The workflow focuses on adults ages **18–62**, uses complete cases for the mod
 | Hypertension prevalence | 66.4% |
 
 These values describe the final complete-case, no-BP-medication analytic sample used in the project.
+
+## Figures and generated outputs
+
+Running the analysis script now writes publication-ready model tables to `results/` and three portfolio-ready PNG figures to `figures/`:
+
+- `mvpa_hypertension_models.png` — MVPA odds ratio before vs. after adding waist circumference.
+- `mvpa_waist_association.png` — adjusted MVPA association with waist circumference.
+- `sample_snapshot.png` — compact analytic-sample profile.
+
+The coefficient figures are generated from the fitted models rather than hard-coded values.
 
 ## Repository structure
 
