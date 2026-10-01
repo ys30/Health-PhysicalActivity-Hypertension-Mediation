@@ -1,0 +1,13 @@
+metric,value
+analytic_n,247
+age_mean_years,45.1984
+age_sd_years,11.3373
+MVPA_mean_min_equivalent_week,1416.2389
+MVPA_sd_min_equivalent_week,1974.2762
+waist_mean_cm,107.0223
+waist_sd_cm,18.5569
+SBP_mean_mmHg,131.6734
+SBP_sd_mmHg,20.7818
+HTN_prevalence,0.663968
+male_n,135
+female_n,112
