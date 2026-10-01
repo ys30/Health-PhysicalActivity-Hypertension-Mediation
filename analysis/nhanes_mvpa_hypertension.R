@@ -155,6 +155,7 @@ sample_summary <- df %>%
   )
 
 dir.create("results", showWarnings = FALSE)
+dir.create("figures", showWarnings = FALSE)
 write.csv(sample_summary, "results/sample_summary_generated.csv", row.names = FALSE)
 
 # 7. Pathway-oriented regression models --------------------------------------
@@ -196,7 +197,82 @@ attenuation_table <- tibble(
 
 write.csv(attenuation_table, "results/mvpa_attenuation_generated.csv", row.names = FALSE)
 print(attenuation_table)
-print(anova(model_H1, model_H2, test = "Chisq"))
+model_comparison <- anova(model_H1, model_H2, test = "Chisq")
+print(model_comparison)
+
+# Export tidy model results for reuse outside R.
+model_M_tidy <- broom::tidy(model_M, conf.int = TRUE)
+model_H1_tidy <- broom::tidy(model_H1, conf.int = TRUE, exponentiate = TRUE)
+model_H2_tidy <- broom::tidy(model_H2, conf.int = TRUE, exponentiate = TRUE)
+write.csv(model_M_tidy, "results/model_waist.csv", row.names = FALSE)
+write.csv(model_H1_tidy, "results/model_htn_without_waist.csv", row.names = FALSE)
+write.csv(model_H2_tidy, "results/model_htn_with_waist.csv", row.names = FALSE)
+
+# Portfolio-ready Figure 1: MVPA coefficient before/after adding waist.
+# Scale to a 100-minute-equivalent/week increase so the OR is interpretable.
+mvpa_plot <- bind_rows(
+  broom::tidy(model_H1, conf.int = TRUE) %>% filter(term == "MVPA_me") %>% mutate(model = "Without waist"),
+  broom::tidy(model_H2, conf.int = TRUE) %>% filter(term == "MVPA_me") %>% mutate(model = "With waist")
+) %>%
+  transmute(
+    model,
+    OR_100 = exp(estimate * 100),
+    low_100 = exp(conf.low * 100),
+    high_100 = exp(conf.high * 100)
+  )
+
+p_mvpa <- ggplot(mvpa_plot, aes(x = OR_100, y = model)) +
+  geom_vline(xintercept = 1, linetype = 2, linewidth = 0.6) +
+  geom_errorbarh(aes(xmin = low_100, xmax = high_100), height = 0.12, linewidth = 0.8) +
+  geom_point(size = 3) +
+  labs(
+    title = "MVPA association with hypertension",
+    subtitle = "Odds ratio per 100 minute-equivalents/week, before and after adding waist circumference",
+    x = "Odds ratio (95% CI)",
+    y = NULL,
+    caption = "NHANES 2017–March 2020 pre-pandemic · complete-case sample · no BP-medication users"
+  ) +
+  theme_minimal(base_size = 12) +
+  theme(panel.grid.minor = element_blank(), plot.title = element_text(face = "bold"))
+ggsave("figures/mvpa_hypertension_models.png", p_mvpa, width = 8, height = 4.8, dpi = 220)
+
+# Portfolio-ready Figure 2: MVPA -> waist association.
+mvpa_waist <- model_M_tidy %>% filter(term == "MVPA_me") %>%
+  transmute(
+    estimate_100 = estimate * 100,
+    low_100 = conf.low * 100,
+    high_100 = conf.high * 100
+  )
+
+p_waist <- ggplot(mvpa_waist, aes(x = "MVPA → waist", y = estimate_100)) +
+  geom_hline(yintercept = 0, linetype = 2, linewidth = 0.6) +
+  geom_errorbar(aes(ymin = low_100, ymax = high_100), width = 0.08, linewidth = 0.8) +
+  geom_point(size = 3) +
+  labs(
+    title = "Physical activity and waist circumference",
+    subtitle = "Adjusted change in waist circumference per 100 minute-equivalents/week of MVPA",
+    x = NULL, y = "Waist circumference change (cm; 95% CI)",
+    caption = "Adjusted for sedentary time, smoking, alcohol, age, sex, race/ethnicity and PIR"
+  ) +
+  theme_minimal(base_size = 12) +
+  theme(panel.grid.minor = element_blank(), plot.title = element_text(face = "bold"))
+ggsave("figures/mvpa_waist_association.png", p_waist, width = 7, height = 5, dpi = 220)
+
+# Portfolio-ready Figure 3: sample snapshot.
+sample_plot <- tibble(
+  measure = factor(c("Mean age (years)", "Mean waist (cm)", "Mean SBP (mmHg)", "Hypertension (%)"),
+                   levels = rev(c("Mean age (years)", "Mean waist (cm)", "Mean SBP (mmHg)", "Hypertension (%)"))),
+  value = c(mean(df$age), mean(df$waist), mean(df$SBP), mean(df$HTN) * 100)
+)
+
+p_sample <- ggplot(sample_plot, aes(x = value, y = measure)) +
+  geom_col(width = 0.62) +
+  geom_text(aes(label = sprintf("%.1f", value)), hjust = -0.15, size = 4) +
+  scale_x_continuous(expand = expansion(mult = c(0, .16))) +
+  labs(title = "Analytic sample at a glance", subtitle = paste0("n = ", nrow(df)), x = NULL, y = NULL) +
+  theme_minimal(base_size = 12) +
+  theme(panel.grid.major.y = element_blank(), panel.grid.minor = element_blank(), plot.title = element_text(face = "bold"))
+ggsave("figures/sample_snapshot.png", p_sample, width = 7.5, height = 4.8, dpi = 220)
 
 # 8. Diagnostics --------------------------------------------------------------
 
