@@ -48,17 +48,17 @@ The workflow focuses on adults ages **18–62**, uses complete cases for the mod
 2. Construct weekly MVPA and sedentary time.
 3. Average repeated systolic and diastolic BP measurements.
 4. Build the complete-case analytic sample and exclude BP-medication users.
-5. Fit the waist model: `waist ~ MVPA + covariates`.
+5. Fit pathway model H0 (linear): `waist ~ MVPA + covariates`.
 6. Fit hypertension model H1: `HTN ~ MVPA + covariates`.
 7. Fit hypertension model H2: `HTN ~ MVPA + waist + covariates`.
-8. Compare H1 and H2 and inspect attenuation of the MVPA coefficient.
+8. Compare H1 and H2 and describe how the MVPA coefficient changes when waist circumference enters the model; this is not an estimate of a mediated proportion.
 9. Run regression diagnostics, VIF, ROC/AUC, Hosmer–Lemeshow checks, and influence diagnostics.
 
 ## Results
 
 ![Analytic sample results](figures/sample_results.svg)
 
-The final analytic sample contains **247 adults**. Mean age was **45.2 years**, mean waist circumference was **107.0 cm**, mean systolic blood pressure was **131.7 mmHg**, and **66.4%** met the analysis definition of hypertension. Mean weekly MVPA was **1,416.2 minute-equivalents**.
+The final analytic sample contains **247 adults** (**135 men and 112 women**). Mean age was **45.2 years**, mean waist circumference was **107.0 cm**, mean systolic blood pressure was **131.7 mmHg**, and **66.4%** met the analysis definition of hypertension. Mean weekly MVPA was **1,416.2 minute-equivalents**.
 
 ![Race and ethnicity distribution](figures/race_distribution.svg)
 
@@ -67,10 +67,11 @@ The final analytic sample contains **247 adults**. Mean age was **45.2 years**, 
 | Metric | Value |
 |---|---:|
 | Analytic sample | 247 |
-| Mean age | 45.2 years |
-| Mean weekly MVPA | 1,416.2 min-equivalent |
-| Mean waist circumference | 107.0 cm |
-| Mean systolic BP | 131.7 mmHg |
+| Mean age (SD) | 45.2 (11.3) years |
+| Sex | 135 men; 112 women |
+| Weekly MVPA (mean, SD) | 1,416 (1,974) min-equivalent |
+| Waist circumference (mean, SD) | 107.0 (18.6) cm |
+| Systolic BP (mean, SD) | 131.7 (20.8) mmHg |
 | Hypertension prevalence | 66.4% |
 
 These values describe the final complete-case, no-BP-medication analytic sample used in the project.
@@ -109,9 +110,9 @@ Required packages: `tidyverse`, `haven`, `DiagrammeR`, `broom`, `lmtest`, `car`,
 
 The script downloads the public NHANES XPT files directly from CDC/NCHS, so raw participant-level data are not stored in this repository.
 
-## Interpretation note
+## Limitations and interpretation
 
-This is an **unweighted exploratory analysis** of the selected complete-case sample. The three-model sequence evaluates whether the MVPA coefficient changes after waist circumference enters the hypertension model; it should not be interpreted as a formal causal mediation estimate or as a nationally representative NHANES estimate.
+This is an **unweighted exploratory analysis** of a small selected complete-case sample, excluding participants taking blood-pressure medication. It is not nationally representative. Physical activity is self-reported; all variables are assessed cross-sectionally, and residual confounding or reverse causality remain possible. The three-model sequence evaluates whether the MVPA coefficient changes after waist circumference enters the hypertension model; logistic coefficient changes are also affected by non-collapsibility and should **not** be interpreted as a mediated share or formal causal mediation estimate. Numerical model coefficients should be read from generated outputs, not inferred from these descriptive summaries.
 
 ## Skills demonstrated
 
